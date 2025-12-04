@@ -242,3 +242,25 @@
         width: 100%;
     }
 }
+
+
+
+.chart-section {
+    margin-bottom: 24px;
+}
+
+.chart-card {
+    padding: 20px !important;
+    border-radius: 12px !important;
+}
+
+.chart-wrapper {
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+mat-card-header {
+    margin-bottom: 10px;
+}

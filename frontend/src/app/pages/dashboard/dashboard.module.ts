@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { SharedModule } from '../../shared/shared.module';
-
+import { BaseChartDirective } from 'ng2-charts';
 // Angular Material 
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -19,6 +19,7 @@ import { MatDividerModule } from '@angular/material/divider';
     CommonModule,
     DashboardRoutingModule,
     SharedModule, 
+    BaseChartDirective,
     
     // Material modules
     MatCardModule,
