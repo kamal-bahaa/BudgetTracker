@@ -1,0 +1,109 @@
+<div class="layout-container">
+    <mat-sidenav-container class="sidenav-container">
+        <mat-sidenav #sidenav mode="side" [opened]="isSidenavOpen" class="sidenav">
+
+            <div class="brand">
+                <div class="logo-circle">
+                    <mat-icon class="brand-icon">account_balance_wallet</mat-icon>
+                </div>
+                <h3 *ngIf="isSidenavOpen" class="brand-text" style="color: #ffffff;">Budget<span class="brand-highlight">Tracker</span></h3>
+            </div>
+
+            <div class="scroll-wrapper">
+                <mat-nav-list class="nav-list">
+                    
+                    <h4 class="menu-header" *ngIf="isSidenavOpen" style="color: #7a7676; opacity: 0.9;">Main Menu</h4>
+
+                    <a mat-list-item class="nav-item" [class.active]="isActiveRoute('/dashboard')"
+                        (click)="navigateTo('/dashboard')">
+                        <mat-icon matListItemIcon>dashboard</mat-icon>
+                        <span  style="color: #ffffff; opacity: 0.9;" matListItemTitle *ngIf="isSidenavOpen">Dashboard</span>
+                    </a>
+
+                    <a mat-list-item class="nav-item" [class.active]="isActiveRoute('/expenses')"
+                        (click)="navigateTo('/expenses')">
+                        <mat-icon matListItemIcon>trending_down</mat-icon>
+                        <span  style="color: #ffffff; opacity: 0.9;"  matListItemTitle *ngIf="isSidenavOpen">Expenses</span>
+                    </a>
+
+                    <a mat-list-item class="nav-item" [class.active]="isActiveRoute('/income')"
+                        (click)="navigateTo('/income')">
+                        <mat-icon matListItemIcon>trending_up</mat-icon>
+                        <span  style="color: #ffffff; opacity: 0.9;" matListItemTitle *ngIf="isSidenavOpen">Income</span>
+                    </a>
+
+                    <a mat-list-item class="nav-item" [class.active]="isActiveRoute('/budget')"
+                        (click)="navigateTo('/budget')">
+                        <mat-icon matListItemIcon>pie_chart</mat-icon>
+                        <span  style="color: #ffffff; opacity: 0.9;" matListItemTitle *ngIf="isSidenavOpen">Budget Plan</span>
+                    </a>
+
+                    <a mat-list-item class="nav-item" [class.active]="isActiveRoute('/goals')"
+                        (click)="navigateTo('/goals')">
+                        <mat-icon matListItemIcon>flag</mat-icon>
+                        <span  style="color: #ffffff; opacity: 0.9;" matListItemTitle *ngIf="isSidenavOpen">Goals</span>
+                    </a>
+
+                    <h4 class="menu-header" *ngIf="isSidenavOpen" style="color: #7a7676; opacity: 0.9;">Reports</h4>
+
+                    <a mat-list-item class="nav-item" [class.active]="isActiveRoute('/analytics')"
+                        (click)="navigateTo('/analytics')">
+                        <mat-icon matListItemIcon>bar_chart</mat-icon>
+                        <span style="color: #ffffff; opacity: 0.9;"  matListItemTitle *ngIf="isSidenavOpen">Analytics</span>
+                    </a>
+
+                    <a mat-list-item class="nav-item" [class.active]="isActiveRoute('/summary')"
+                        (click)="navigateTo('/summary')">
+                        <mat-icon matListItemIcon>description</mat-icon>
+                        <span  style="color: #ffffff; opacity: 0.9;" matListItemTitle *ngIf="isSidenavOpen">Summary</span>
+                    </a>
+                </mat-nav-list>
+            </div>
+
+            <div class="sidebar-footer">
+                <mat-divider class="footer-divider"></mat-divider>
+                
+                <a mat-list-item class="nav-item" [class.active]="isActiveRoute('/profile')"
+                    (click)="navigateTo('/profile')">
+                    <mat-icon matListItemIcon>person_outline</mat-icon>
+                    <span  style="color: #ffffff; opacity: 0.9;" matListItemTitle *ngIf="isSidenavOpen">Profile</span>
+                </a>
+
+                <a mat-list-item class="nav-item logout" (click)="logout()">
+                    <mat-icon matListItemIcon>logout</mat-icon>
+                    <span  style="color: #ffffff; opacity: 0.9;" matListItemTitle *ngIf="isSidenavOpen">Logout</span>
+                </a>
+            </div>
+
+        </mat-sidenav>
+
+        <mat-sidenav-content class="main-content">
+            <mat-toolbar class="toolbar">
+                <div class="toolbar-left">
+                    <button mat-icon-button (click)="toggleSidenav()" class="menu-btn">
+                        <mat-icon>menu</mat-icon>
+                    </button>
+                    <div class="welcome-text">
+                        <span class="greeting">Welcome back,</span>
+                        <span class="username">{{ userName }}</span>
+                    </div>
+                </div>
+
+                <div class="toolbar-right">
+                    <button mat-icon-button class="icon-btn">
+                        <mat-icon matBadge="3" matBadgeColor="warn" matBadgeSize="small">notifications</mat-icon>
+                    </button>
+                    <button mat-icon-button class="icon-btn user-avatar-btn" (click)="navigateTo('/profile')">
+                        <img src="assets/avatar-placeholder.png" onerror="this.src='https://ui-avatars.com/api/?name=User&background=random'" alt="User" class="user-avatar">
+                    </button>
+                </div>
+            </mat-toolbar>
+
+            <div class="content-wrapper">
+                <div class="content-container">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

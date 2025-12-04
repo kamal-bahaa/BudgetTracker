@@ -1,0 +1,60 @@
+<div class="goals-container">
+    <div class="page-header">
+        <div class="header-title">
+            <h1>Savings Goals</h1>
+            <p>Track your progress towards your dreams</p>
+        </div>
+        <button mat-raised-button color="primary" (click)="openAddDialog()">
+            <mat-icon>add</mat-icon> New Goal
+        </button>
+    </div>
+
+    <div *ngIf="isLoading && goals.length === 0" class="loading-container">
+        <mat-spinner diameter="50"></mat-spinner>
+    </div>
+
+    <div *ngIf="!isLoading && goals.length === 0" class="no-data">
+        <mat-icon>flag</mat-icon>
+        <p>No goals set yet. Start saving today!</p>
+    </div>
+
+    <div class="goals-grid" *ngIf="!isLoading && goals.length > 0">
+        <mat-card *ngFor="let goal of goals" class="goal-card">
+            <mat-card-header>
+                <div mat-card-avatar class="goal-icon">
+                    <mat-icon>savings</mat-icon>
+                </div>
+                <mat-card-title>{{ goal.title }}</mat-card-title>
+                <mat-card-subtitle>
+                    Target: {{ goal.targetAmount | currency }}
+                </mat-card-subtitle>
+                <span class="spacer"></span>
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="openEditDialog(goal)">
+                        <mat-icon>edit</mat-icon> Edit
+                    </button>
+                    <button mat-menu-item (click)="deleteGoal(goal._id!)">
+                        <mat-icon color="warn">delete</mat-icon> Delete
+                    </button>
+                </mat-menu>
+            </mat-card-header>
+
+            <mat-card-content class="goal-content">
+                <div class="progress-info">
+                    <span class="amount">{{ goal.currentAmount | currency }}</span>
+                    <span class="percent">{{ calculateProgress(goal.currentAmount, goal.targetAmount) | number:'1.0-0'
+                        }}%</span>
+                </div>
+                <mat-progress-bar mode="determinate" [value]="calculateProgress(goal.currentAmount, goal.targetAmount)"
+                    [color]="goal.status === 'completed' ? 'accent' : 'primary'">
+                </mat-progress-bar>
+                <div class="deadline" *ngIf="goal.deadline">
+                    <mat-icon>event</mat-icon> {{ goal.deadline | date:'mediumDate' }}
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

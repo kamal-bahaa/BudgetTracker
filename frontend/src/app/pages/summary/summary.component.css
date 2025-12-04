@@ -1,0 +1,159 @@
+.summary-container {
+    padding: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.header-title h1 {
+    margin: 0;
+    font-size: 28px;
+    color: #2c3e50;
+}
+
+.header-title p {
+    margin: 4px 0 0;
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+.month-selector {
+    width: 200px;
+    border-radius: 8px;
+}
+
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 32px;
+}
+
+.stat-card {
+    padding: 24px !important;
+    text-align: center;
+    border-radius: 12px !important;
+}
+
+.stat-card h3 {
+    margin: 0 0 8px;
+    color: #95a5a6;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.stat-card .value {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0;
+    color: #2c3e50;
+}
+
+.value.income {
+    color: #27ae60;
+}
+
+.value.expense {
+    color: #c0392b;
+}
+
+.value.info {
+    color: #2980b9;
+}
+
+.value.negative {
+    color: #e74c3c;
+}
+
+.stat-card.highlight {
+    background: #f8f9fa;
+    border: 1px solid #e0e0e0;
+}
+
+.variance-card {
+    border-radius: 12px !important;
+}
+
+.variance-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 16px;
+}
+
+.variance-header {
+    display: grid;
+    grid-template-columns: 2fr 3fr 1fr 1fr 1fr;
+    font-weight: 600;
+    color: #7f8c8d;
+    padding: 0 16px;
+    font-size: 13px;
+}
+
+.variance-item {
+    display: grid;
+    grid-template-columns: 2fr 3fr 1fr 1fr 1fr;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: background 0.2s;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.variance-item:hover {
+    background: #f8f9fa;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.negative {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+.positive {
+    color: #27ae60;
+    font-weight: 600;
+}
+
+.progress-col {
+    padding-right: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.progress-col small {
+    font-size: 11px;
+    color: #95a5a6;
+    text-align: right;
+}
+
+.no-data,
+.no-data-small {
+    text-align: center;
+    color: #bdc3c7;
+    font-style: italic;
+    padding: 20px;
+}
+
+.no-data mat-icon {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+}
+
+.loading-container {
+    display: flex;
+    justify-content: center;
+    padding: 60px;
+}

@@ -1,0 +1,71 @@
+<div class="dialog-header">
+    <h2 mat-dialog-title>{{ data ? 'Edit Budget' : 'Plan New Budget' }}</h2>
+    <button mat-icon-button (click)="onCancel()" tabindex="-1">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+
+<mat-dialog-content class="budget-dialog-content">
+    <form [formGroup]="budgetForm" class="budget-form">
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Month (YYYY-MM)</mat-label>
+            <input matInput [matDatepicker]="dp" formControlName="month">
+            <mat-icon matPrefix>calendar_today</mat-icon>
+            <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+            <mat-datepicker #dp startView="multi-year" (monthSelected)="setMonthAndYear($event, dp)"
+                panelClass="example-month-picker">
+            </mat-datepicker>
+            <mat-error *ngIf="budgetForm.get('month')?.hasError('required')">Month is required</mat-error>
+        </mat-form-field>
+
+        <div class="section-header">
+            <h3>Category Limits</h3>
+            <mat-divider class="flex-grow"></mat-divider>
+        </div>
+
+        <div formGroupName="categories" class="category-grid">
+
+            <mat-form-field appearance="outline">
+                <mat-label>Food & Dining</mat-label>
+                <span matPrefix class="currency-prefix">$</span>
+                <input matInput type="number" formControlName="Food" min="0">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Transportation</mat-label>
+                <span matPrefix class="currency-prefix">$</span>
+                <input matInput type="number" formControlName="Transport" min="0">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Shopping</mat-label>
+                <span matPrefix class="currency-prefix">$</span>
+                <input matInput type="number" formControlName="Shopping" min="0">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Bills & Utilities</mat-label>
+                <span matPrefix class="currency-prefix">$</span>
+                <input matInput type="number" formControlName="Bills" min="0">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="span-full">
+                <mat-label>Other / Misc</mat-label>
+                <span matPrefix class="currency-prefix">$</span>
+                <input matInput type="number" formControlName="Other" min="0">
+            </mat-form-field>
+
+        </div>
+
+    </form>
+</mat-dialog-content>
+
+<mat-divider></mat-divider>
+
+<mat-dialog-actions class="dialog-actions">
+    <button mat-stroked-button (click)="onCancel()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="onSave()" [disabled]="budgetForm.invalid">
+        {{ data ? 'Update Plan' : 'Save Plan' }}
+    </button>
+</mat-dialog-actions>

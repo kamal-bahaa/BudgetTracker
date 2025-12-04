@@ -1,0 +1,74 @@
+<div class="budget-container">
+    <div class="page-header">
+        <div class="header-title">
+            <h1>Budget Planning</h1>
+            <p>Set monthly limits to keep your finances on track</p>
+        </div>
+        <button mat-raised-button color="primary" (click)="openAddDialog()">
+            <mat-icon>add</mat-icon> Plan New Month
+        </button>
+    </div>
+
+    <div *ngIf="isLoading" class="loading-container">
+        <mat-spinner diameter="50"></mat-spinner>
+    </div>
+
+    <div *ngIf="!isLoading && budgets.length === 0" class="no-data">
+        <mat-icon>account_balance_wallet</mat-icon>
+        <p>No budgets planned yet.</p>
+    </div>
+
+    <div class="budgets-list" *ngIf="!isLoading && budgets.length > 0">
+        <mat-card *ngFor="let budget of budgets" class="budget-card">
+            <div class="budget-header">
+                <div class="month-badge">
+                    <mat-icon>calendar_today</mat-icon>
+                    <span>{{ budget.month | date:'MMMM yyyy' : 'UTC' }}</span>
+                </div>
+                <div class="actions">
+                    <button mat-icon-button color="primary" (click)="openEditDialog(budget)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button color="warn" (click)="deleteBudget(budget._id!)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+            </div>
+
+            <mat-divider></mat-divider>
+
+            <div class="budget-total">
+                <span class="label">Total Planned</span>
+                <span class="value">{{ calculateTotal(budget.categories) | currency }}</span>
+            </div>
+
+            <div class="category-grid">
+                <div class="cat-item">
+                    <mat-icon>restaurant</mat-icon>
+                    <span class="cat-name">Food</span>
+                    <span class="cat-val">{{ budget.categories.Food | currency }}</span>
+                </div>
+                <div class="cat-item">
+                    <mat-icon>directions_car</mat-icon>
+                    <span class="cat-name">Transport</span>
+                    <span class="cat-val">{{ budget.categories.Transport | currency }}</span>
+                </div>
+                <div class="cat-item">
+                    <mat-icon>shopping_bag</mat-icon>
+                    <span class="cat-name">Shopping</span>
+                    <span class="cat-val">{{ budget.categories.Shopping | currency }}</span>
+                </div>
+                <div class="cat-item">
+                    <mat-icon>receipt</mat-icon>
+                    <span class="cat-name">Bills</span>
+                    <span class="cat-val">{{ budget.categories.Bills | currency }}</span>
+                </div>
+                <div class="cat-item">
+                    <mat-icon>category</mat-icon>
+                    <span class="cat-name">Other</span>
+                    <span class="cat-val">{{ budget.categories.Other | currency }}</span>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>

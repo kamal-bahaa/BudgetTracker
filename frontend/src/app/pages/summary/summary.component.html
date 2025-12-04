@@ -1,0 +1,97 @@
+<div class="summary-container">
+    <div class="page-header">
+        <div class="header-title">
+            <h1>Monthly Report</h1>
+            <p>Budget Variance & Financial Health</p>
+        </div>
+
+        <mat-form-field appearance="outline" class="month-selector">
+            <mat-label>Select Month</mat-label>
+            <input matInput [matDatepicker]="dp" [formControl]="date">
+            <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+            <mat-datepicker #dp startView="multi-year" (yearSelected)="chosenYearHandler($event)"
+                (monthSelected)="chosenMonthHandler($event, dp)" panelClass="example-month-picker">
+            </mat-datepicker>
+        </mat-form-field>
+    </div>
+
+    <div *ngIf="isLoading" class="loading-container">
+        <mat-spinner diameter="50"></mat-spinner>
+    </div>
+
+    <div *ngIf="!isLoading && !summary" class="no-data">
+        <mat-icon>assessment</mat-icon>
+        <p>No data available for this month.</p>
+    </div>
+
+    <div *ngIf="!isLoading && summary" class="summary-content">
+
+        <div class="stats-row">
+            <mat-card class="stat-card">
+                <h3>Total Income</h3>
+                <p class="value income">{{ summary.totalIncome | currency }}</p>
+            </mat-card>
+
+            <mat-card class="stat-card">
+                <h3>Total Budget</h3>
+                <p class="value info">{{ summary.totalBudget | currency }}</p>
+            </mat-card>
+
+            <mat-card class="stat-card">
+                <h3>Actual Spent</h3>
+                <p class="value expense">{{ summary.totalExpenses | currency }}</p>
+            </mat-card>
+
+            <mat-card class="stat-card highlight">
+                <h3>Remaining Budget</h3>
+                <p class="value" [class.negative]="summary.remaining < 0">
+                    {{ summary.remaining | currency }}
+                </p>
+            </mat-card>
+        </div>
+
+        <mat-card class="variance-card">
+            <mat-card-header>
+                <mat-icon mat-card-avatar>assessment</mat-icon>
+                <mat-card-title>Budget Variance Analysis</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="variance-list">
+                    <div class="variance-header">
+                        <span>Category</span>
+                        <span>Usage</span>
+                        <span class="align-right">Budget</span>
+                        <span class="align-right">Spent</span>
+                        <span class="align-right">Variance</span>
+                    </div>
+                    <mat-divider></mat-divider>
+
+                    <div *ngFor="let cat of summary.categories" class="variance-item">
+                        <div class="cat-info">
+                            <strong>{{ cat.category }}</strong>
+                        </div>
+
+                        <div class="progress-col">
+                            <mat-progress-bar mode="determinate" [value]="cat.usedPercent || 0"
+                                [color]="getProgressBarColor(cat.usedPercent)">
+                            </mat-progress-bar>
+                            <small>{{ cat.usedPercent }}%</small>
+                        </div>
+
+                        <div class="align-right">{{ cat.limit | currency }}</div>
+                        <div class="align-right">{{ cat.spent | currency }}</div>
+                        <div class="align-right" [class.negative]="cat.remaining < 0"
+                            [class.positive]="cat.remaining > 0">
+                            {{ cat.remaining | currency }}
+                        </div>
+                    </div>
+
+                    <div *ngIf="summary.categories.length === 0" class="no-data-small">
+                        No budget categories set for this month.
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+    </div>
+</div>

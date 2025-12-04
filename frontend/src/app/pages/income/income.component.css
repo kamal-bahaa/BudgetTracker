@@ -1,0 +1,129 @@
+.income-container {
+    padding: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+
+    .header-title h1 {
+        margin: 0;
+        font-size: 30px;
+        color: #1e293b;
+        font-weight: 600;
+    }
+
+    .header-title p {
+        margin: 4px 0 0;
+        color: #64748b;
+        font-size: 15px;
+    }
+}
+
+.search-wrapper {
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+
+.search-field {
+    width: 100%;
+
+    .mat-form-field-outline {
+        display: none !important;
+    }
+
+    .mat-form-field-underline {
+        display: none !important;
+    }
+
+    .mat-form-field-wrapper {
+        padding-bottom: 0;
+    }
+
+    .mat-form-field-flex {
+        padding: 10px 16px !important;
+        border-radius: 14px !important;
+    }
+
+    input {
+        font-size: 15px;
+        padding: 6px 0 !important;
+        color: #1e293b;
+
+        &::placeholder {
+            opacity: .7;
+        }
+    }
+
+    .search-icon {
+        margin-right: 6px;
+        opacity: .55;
+        transition: color .2s ease, opacity .2s ease;
+    }
+
+    &.mat-focused {
+        .mat-form-field-flex {
+            border: 2px solid #3b82f6;
+        }
+
+        .search-icon {
+            color: #3b82f6;
+            opacity: 1;
+        }
+    }
+}
+.table-container {
+    position: relative;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.loading-shade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+table {
+    width: 100%;
+}
+
+.source-badge {
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.amount-cell {
+    font-weight: 600;
+    color: #2e7d32;
+}
+
+@media (max-width: 600px) {
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .page-header button {
+        width: 100%;
+    }
+}

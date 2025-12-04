@@ -1,0 +1,59 @@
+<div class="login-container">
+    <mat-card class="login-card">
+        <div class="card-header">
+            <h2>Welcome Back</h2>
+            <p class="subtitle">Please sign in to continue</p>
+        </div>
+
+        <div class="error-alert" *ngIf="errorMessage">
+            <mat-icon class="error-icon">error_outline</mat-icon>
+            <span>{{ errorMessage }}</span>
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Email Address</mat-label>
+                <input matInput type="email" formControlName="email" placeholder="example@email.com"
+                    autocomplete="email">
+                <mat-icon matPrefix>email</mat-icon>
+                <mat-error *ngIf="loginForm.get('email')?.touched">
+                    {{ getEmailErrorMessage() }}
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Password</mat-label>
+                <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password"
+                    placeholder="Enter your password" autocomplete="current-password">
+                <mat-icon matPrefix>lock</mat-icon>
+                <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword"
+                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+                    <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+                <mat-error *ngIf="loginForm.get('password')?.touched">
+                    {{ getPasswordErrorMessage() }}
+                </mat-error>
+            </mat-form-field>
+
+            <div class="forgot-password">
+                <a href="javascript:void(0)" class="link">Forgot Password?</a>
+            </div>
+
+            <button mat-raised-button color="primary" type="submit" class="full-width submit-btn"
+                [disabled]="isLoading">
+                <span *ngIf="!isLoading">Sign In</span>
+                <mat-spinner *ngIf="isLoading" diameter="24" class="spinner"></mat-spinner>
+            </button>
+
+            <div class="divider">
+                <span>OR</span>
+            </div>
+
+            <div class="register-link">
+                <span>Don't have an account? </span>
+                <a (click)="navigateToRegister()" class="link">Sign Up</a>
+            </div>
+        </form>
+    </mat-card>
+</div>

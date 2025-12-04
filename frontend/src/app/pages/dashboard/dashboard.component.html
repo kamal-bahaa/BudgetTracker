@@ -1,0 +1,92 @@
+<div class="dashboard-content">
+    <div *ngIf="isLoading" class="loading-container">
+        <mat-spinner diameter="50"></mat-spinner>
+        <p>Loading dashboard...</p>
+    </div>
+
+    <div *ngIf="errorMessage && !isLoading" class="error-alert">
+        <mat-icon>error_outline</mat-icon>
+        <span>{{ errorMessage }}</span>
+        <button mat-button (click)="loadDashboard()">Retry</button>
+    </div>
+
+    <div *ngIf="!isLoading && !errorMessage">
+        <div class="overview-cards">
+            <mat-card class="stat-card income-card" appHighlight="#e8f5e9">
+                <div class="card-icon">
+                    <mat-icon>trending_up</mat-icon>
+                </div>
+                <div class="card-content">
+                    <h3>Total Income</h3>
+                    <p class="amount">${{ overview.totalIncome.toLocaleString() }}</p>
+                    <span class="count">{{ overview.incomeCount }} transactions</span>
+                </div>
+            </mat-card>
+
+            <mat-card class="stat-card expense-card" appHighlight="#ffebee">
+                <div class="card-icon">
+                    <mat-icon>trending_down</mat-icon>
+                </div>
+                <div class="card-content">
+                    <h3>Total Expenses</h3>
+                    <p class="amount">${{ overview.totalExpenses.toLocaleString() }}</p>
+                    <span class="count">{{ overview.expenseCount }} transactions</span>
+                </div>
+            </mat-card>
+
+            <mat-card class="stat-card balance-card" appHighlight="#e3f2fd">
+                <div class="card-icon">
+                    <mat-icon>account_balance</mat-icon>
+                </div>
+                <div class="card-content">
+                    <h3>Current Balance</h3>
+                    <p class="amount">${{ overview.balance.toLocaleString() }}</p>
+                    <span class="status" [class.positive]="overview.balance > 0"
+                        [class.negative]="overview.balance < 0">
+                        {{ overview.balance >= 0 ? 'Positive' : 'Negative' }}
+                    </span>
+                </div>
+            </mat-card>
+        </div>
+
+        <div class="quick-actions">
+            <button mat-raised-button color="primary" (click)="navigateTo('/expenses')">
+                <mat-icon>add</mat-icon>
+                Add Expense
+            </button>
+            <button mat-raised-button color="accent" (click)="navigateTo('/income')">
+                <mat-icon>add</mat-icon>
+                Add Income
+            </button>
+        </div>
+
+        <mat-card class="transactions-card">
+            <h3>Recent Transactions</h3>
+            <mat-divider></mat-divider>
+
+            <div *ngIf="recentTransactions.length === 0" class="no-data">
+                <mat-icon>inbox</mat-icon>
+                <p>No transactions yet</p>
+            </div>
+
+            <div *ngIf="recentTransactions.length > 0" class="transactions-list">
+                <div *ngFor="let transaction of recentTransactions" class="transaction-item">
+                    <div class="transaction-icon" [class.income]="transaction.type === 'income'"
+                        [class.expense]="transaction.type === 'expense'">
+                        <mat-icon>{{ transaction.type === 'income' ? 'add' : 'remove' }}</mat-icon>
+                    </div>
+                    <div class="transaction-info">
+                        <h4>{{ transaction.category }}</h4>
+                        <p>{{ transaction.description }}</p>
+                        <span class="date">{{ transaction.date | timeAgo }}</span>
+                    </div>
+                    <div class="transaction-amount" [class.income]="transaction.type === 'income'"
+                        [class.expense]="transaction.type === 'expense'">
+                        {{ transaction.type === 'income' ? '+' : '-' }}${{
+                        transaction.amount.toLocaleString() }}
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>

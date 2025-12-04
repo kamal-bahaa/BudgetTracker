@@ -1,0 +1,176 @@
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+}
+
+.register-card {
+    width: 100%;
+    max-width: 420px;
+    padding: 40px 35px;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.card-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.card-header h2 {
+    margin: 0 0 8px 0;
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+}
+
+.subtitle {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.error-container {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.error-message {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    background-color: #ffebee;
+    color: #c62828;
+    border-radius: 8px;
+    font-size: 13px;
+    border-left: 4px solid #c62828;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.full-width {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+mat-form-field {
+    font-size: 14px;
+}
+
+::ng-deep .mat-mdc-form-field-error {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    font-size: 12px;
+}
+
+.terms {
+    text-align: center;
+    font-size: 13px;
+    color: #666;
+    margin: 10px 0 20px;
+    line-height: 1.5;
+}
+
+.submit-btn {
+    height: 48px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.spinner {
+    margin: 0 auto;
+}
+
+::ng-deep .submit-btn .mat-mdc-button-persistent-ripple {
+    border-radius: 8px;
+}
+
+.divider {
+    text-align: center;
+    margin: 25px 0;
+    position: relative;
+}
+
+.divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #e0e0e0;
+}
+
+.divider span {
+    position: relative;
+    background-color: white;
+    padding: 0 15px;
+    color: #999;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.login-link {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+.link {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.link:hover {
+    color: #764ba2;
+    text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+    .register-card {
+        padding: 30px 25px;
+    }
+
+    .card-header h2 {
+        font-size: 24px;
+    }
+
+}
+
+::ng-deep .mat-mdc-form-field-icon-prefix {
+    color: #999;
+    margin-right: 8px;
+}
+
+::ng-deep .mat-mdc-form-field.mat-focused .mat-mdc-form-field-icon-prefix {
+    color: #667eea;
+}

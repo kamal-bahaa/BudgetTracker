@@ -1,0 +1,116 @@
+.goals-container {
+    padding: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.header-title h1 {
+    margin: 0;
+    font-size: 28px;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.header-title p {
+    margin: 4px 0 0;
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+.goals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.goal-card {
+    border-radius: 12px !important;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.goal-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1) !important;
+}
+
+.goal-icon {
+    background: #e3f2fd;
+    color: #1976d2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.spacer {
+    flex: 1;
+}
+
+.goal-content {
+    padding-top: 16px;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+}
+
+.amount {
+    font-size: 24px;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.percent {
+    font-size: 14px;
+    font-weight: 600;
+    color: #7f8c8d;
+}
+
+mat-progress-bar {
+    height: 10px;
+    border-radius: 5px;
+}
+
+.deadline {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 16px;
+    font-size: 13px;
+    color: #95a5a6;
+}
+
+.deadline mat-icon {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+}
+
+.no-data {
+    text-align: center;
+    padding: 60px;
+    color: #bdc3c7;
+}
+
+.no-data mat-icon {
+    font-size: 64px;
+    width: 64px;
+    height: 64px;
+    margin-bottom: 16px;
+}
+
+.loading-container {
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+}

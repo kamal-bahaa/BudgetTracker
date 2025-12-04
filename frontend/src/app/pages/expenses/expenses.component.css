@@ -1,0 +1,157 @@
+.expenses-container {
+    padding: 28px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+
+    .header-title h1 {
+        margin: 0;
+        font-size: 30px;
+        color: #1e293b;
+        font-weight: 600;
+    }
+
+    .header-title p {
+        margin: 4px 0 0;
+        color: #64748b;
+        font-size: 15px;
+    }
+}
+
+.search-wrapper {
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+
+.search-field {
+    width: 100%;
+
+    .mat-form-field-outline {
+        display: none !important;
+    }
+
+    .mat-form-field-underline {
+        display: none !important;
+    }
+
+    .mat-form-field-wrapper {
+        padding-bottom: 0;
+    }
+
+    .mat-form-field-flex {
+        padding: 10px 16px !important;
+        border-radius: 14px !important;
+    }
+
+    input {
+        font-size: 15px;
+        padding: 6px 0 !important;
+        color: #1e293b;
+
+        &::placeholder {
+            opacity: .7;
+        }
+    }
+
+    .search-icon {
+        margin-right: 6px;
+        opacity: .55;
+        transition: color .2s ease, opacity .2s ease;
+    }
+
+    &.mat-focused {
+        .mat-form-field-flex {
+            border: 2px solid #3b82f6;
+        }
+
+        .search-icon {
+            color: #3b82f6;
+            opacity: 1;
+        }
+    }
+}
+
+.table-container {
+    position: relative;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+}
+
+.loading-shade {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, .7);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+table {
+    width: 100%;
+}
+
+th.mat-header-cell {
+    font-size: 14px;
+    font-weight: 600;
+    color: #475569;
+    background: #f8fafc;
+}
+
+td.mat-cell {
+    font-size: 14px;
+    color: #334155;
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
+.category-badge {
+    background: #e8f1ff;
+    color: #1d4ed8;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.amount-cell {
+    font-weight: 700;
+    color: #dc2626;
+}
+
+.actions button {
+    margin-right: 4px;
+}
+
+.actions mat-icon {
+    font-size: 20px;
+}
+
+tr.mat-row:hover {
+    background: #f8fafc;
+}
+
+.mat-paginator {
+    border-top: 1px solid #e2e8f0;
+}
+
+@media (max-width: 768px) {
+    .page-header {
+        flex-direction: column;
+        gap: 18px;
+        align-items: flex-start;
+
+        button {
+            width: 100%;
+        }
+    }
+}

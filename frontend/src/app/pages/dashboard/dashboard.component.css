@@ -1,0 +1,244 @@
+.dashboard-content {
+    padding: 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    gap: 20px;
+}
+
+.error-alert {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: #ffebee;
+    color: #c62828;
+    border-radius: 8px;
+    border-left: 4px solid #c62828;
+    margin-bottom: 24px;
+}
+
+.error-alert mat-icon {
+    font-size: 24px;
+}
+
+.overview-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 24px !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.card-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-icon mat-icon {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+}
+
+.income-card .card-icon {
+    background: rgba(46, 204, 113, 0.1);
+    color: #27ae60;
+}
+
+.expense-card .card-icon {
+    background: rgba(231, 76, 60, 0.1);
+    color: #e74c3c;
+}
+
+.balance-card .card-icon {
+    background: rgba(52, 152, 219, 0.1);
+    color: #3498db;
+}
+
+.card-content h3 {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    color: #7f8c8d;
+    font-weight: 500;
+}
+
+.card-content .amount {
+    margin: 0 0 4px 0;
+    font-size: 28px;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.card-content .count {
+    font-size: 12px;
+    color: #95a5a6;
+}
+
+.card-content .status {
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.status.positive {
+    background: rgba(46, 204, 113, 0.1);
+    color: #27ae60;
+}
+
+.status.negative {
+    background: rgba(231, 76, 60, 0.1);
+    color: #e74c3c;
+}
+
+.quick-actions {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.quick-actions button {
+    height: 48px;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+/* Transactions Card */
+.transactions-card {
+    padding: 24px !important;
+    border-radius: 12px !important;
+}
+
+.transactions-card h3 {
+    margin: 0 0 16px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.no-data {
+    text-align: center;
+    padding: 40px;
+    color: #95a5a6;
+}
+
+.no-data mat-icon {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 12px;
+}
+
+.transactions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.transaction-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.transaction-item:hover {
+    background: #e9ecef;
+}
+
+.transaction-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.transaction-icon.income {
+    background: rgba(46, 204, 113, 0.1);
+    color: #27ae60;
+}
+
+.transaction-icon.expense {
+    background: rgba(231, 76, 60, 0.1);
+    color: #e74c3c;
+}
+
+.transaction-info {
+    flex: 1;
+}
+
+.transaction-info h4 {
+    margin: 0 0 4px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.transaction-info p {
+    margin: 0 0 4px 0;
+    font-size: 13px;
+    color: #7f8c8d;
+}
+
+.transaction-info .date {
+    font-size: 12px;
+    color: #95a5a6;
+}
+
+.transaction-amount {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.transaction-amount.income {
+    color: #27ae60;
+}
+
+.transaction-amount.expense {
+    color: #e74c3c;
+}
+
+@media (max-width: 768px) {
+    .overview-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .quick-actions {
+        flex-direction: column;
+    }
+
+    .quick-actions button {
+        width: 100%;
+    }
+}

@@ -1,0 +1,113 @@
+.profile-container {
+    padding: 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.page-header {
+    margin-bottom: 32px;
+}
+
+.page-header h1 {
+    margin: 0;
+    font-size: 28px;
+    color: #2c3e50;
+}
+
+.page-header p {
+    margin: 4px 0 0;
+    color: #7f8c8d;
+}
+
+.profile-content {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.avatar-card {
+    text-align: center;
+    padding: 32px !important;
+    border-radius: 12px !important;
+}
+
+.avatar-circle {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 36px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 auto 16px;
+}
+
+.avatar-card h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.avatar-card p {
+    margin: 4px 0 0;
+    color: #7f8c8d;
+}
+
+.forms-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.settings-card {
+    border-radius: 12px !important;
+}
+
+.full-width {
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+}
+
+.danger-zone {
+    border: 1px solid #ffebee;
+}
+
+.danger-zone p {
+    color: #666;
+    margin-bottom: 16px;
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.7);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .profile-content {
+        grid-template-columns: 1fr;
+    }
+
+    .avatar-circle {
+        width: 80px;
+        height: 80px;
+        font-size: 28px;
+    }
+}
